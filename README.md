@@ -20,5 +20,5 @@
    ```bash
    dotnet ef database update
    
-- [Оценка времени выполнения (timing.md)](./docs/timing.md)
-- [Вопросы к PM и TL (questions.md)](./docs/questions.md)
+- [Оценка времени выполнения (timing.md)](./Docs/timing.md)
+- [Вопросы к PM и TL (questions.md)](./Docs/questions.md)
