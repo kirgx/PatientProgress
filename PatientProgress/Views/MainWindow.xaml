@@ -1,0 +1,46 @@
+﻿<Window x:Class="PatientProgress.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PatientProgress.Views"
+        mc:Ignorable="d"
+        Title="Пациенты" Height="500" Width="600">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Форма добавления пациента -->
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10" VerticalAlignment="Top">
+            <StackPanel Margin="0,0,10,0">
+                <TextBlock Text="ФИО пациента"/>
+                <TextBox Width="200"
+                         Text="{Binding NewPatientName, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <StackPanel Margin="0,0,10,0">
+                <TextBlock Text="Дата рождения"/>
+                <DatePicker Width="150"
+                            SelectedDate="{Binding NewPatientBirthday}" />
+            </StackPanel>
+
+            <Button Content="Добавить"
+                    Command="{Binding AddPatientCommand}"
+                    VerticalAlignment="Bottom"
+                    Width="100"/>
+        </StackPanel>
+
+        <!-- Список пациентов -->
+        <ListView Grid.Row="1" ItemsSource="{Binding Patients}" MouseDoubleClick="OnPatientDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ФИО" DisplayMemberBinding="{Binding FullName}" Width="300"/>
+                    <GridViewColumn Header="Дата рождения" DisplayMemberBinding="{Binding DateOfBirth, StringFormat=d}" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
